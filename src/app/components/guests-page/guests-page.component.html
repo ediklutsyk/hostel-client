@@ -1,0 +1,30 @@
+<div class="guests-page-wrapper">
+    <div class="left-part">
+        <button mat-raised-button class="save-btn" (click)="changeType('price')">Show Prices</button>
+        <button mat-raised-button class="save-btn" (click)="changeType('active')">Show Active</button>
+        <button mat-raised-button class="save-btn" (click)="openDialog()">Add New Guest</button>
+    </div>
+    <div class="right-part">
+        <mat-form-field class="example-full-width">
+            <mat-label>Search Guest</mat-label>
+            <mat-icon matPrefix>mode_edit</mat-icon>
+            <input type="text" matInput (keyup)="searchGuests($event)" [(ngModel)]="search">
+        </mat-form-field>
+
+        <div class="guest-item title">
+            <p>No.</p>
+            <p>Name</p>
+            <p>Surname</p>
+            <!-- <p>Status</p> -->
+            <p *ngIf="typeItems === 'price'">Price</p>
+        </div>
+        <div *ngFor="let item of data; let i = index" class="guest-item" [routerLink]="['/guest', item.guestId]"
+            routerLinkActive="router-link-active">
+            <p>{{i + 1}}</p>
+            <p>{{item.name}}</p>
+            <p>{{item.surname}}</p>
+            <p *ngIf="item.status">{{item.status}}</p>
+            <p *ngIf="typeItems === 'price'">{{item.sumPrice}}$</p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+<h1 mat-dialog-title>Add Guest</h1>
+<div mat-dialog-content>
+  <mat-form-field class="example-full-width">
+    <mat-label>Phone Number</mat-label>
+    <input matInput [(ngModel)]="form.phone">
+  </mat-form-field>
+  <div *ngIf="doesntExist">
+    <mat-form-field class="example-full-width">
+      <mat-label>First Name</mat-label>
+      <input matInput [(ngModel)]="form.name">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Last Name</mat-label>
+      <input matInput [(ngModel)]="form.surname">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Email</mat-label>
+      <input matInput [(ngModel)]="form.email">
+    </mat-form-field>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Close</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="addGuest()">Add</button>
+</div>

@@ -1,0 +1,17 @@
+<div class="guest-page-wrapper">
+    <div class="custom-card">
+        <p><b>Name:</b> {{guest.name}} {{guest.surname}}</p>
+        <p><b>Phone:</b> {{guest.phone}}</p>
+        <p><b>Email:</b> {{guest.email}}</p>
+
+        <div class="services" *ngIf="guest?.services && guest.services.length">
+            <p><b>Services:</b></p>
+            <div *ngFor="let item of guest.services; let i = index;">
+                <p><span>{{i + 1}}.</span> {{item.serviceTypeName}} --- {{item.typeSum}}$</p>
+            </div>
+        </div>
+
+        <p class="status-absolute" [class.active]="guest.status === 'active'">{{guest.status}} status</p>
+        <button mat-raised-button color="primary" class="save-btn">Sum Up</button>
+    </div>
+</div>

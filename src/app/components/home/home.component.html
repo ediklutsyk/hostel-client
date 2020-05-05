@@ -1,0 +1,32 @@
+<div class="home-page-wrapper">
+    <app-settings-bar (apply)="filterData($event)" [showOther]="showOther" [showOther2]="showOther2"></app-settings-bar>
+    <div class="home-content">
+        <form class="example-form">
+            <mat-form-field class="example-full-width">
+                <mat-label>Search room by number </mat-label>
+                <mat-icon matPrefix>mode_edit</mat-icon>
+                <input type="number" matInput (keyup)="searchRoom($event)" [(ngModel)]="search"
+                    [ngModelOptions]="{standalone: true}">
+            </mat-form-field>
+        </form>
+        <div class=" home-item" *ngFor="let item of rooms" [routerLink]="['/room', item.roomId]">
+            <div class="between">
+                <p class="type">
+                    {{item.roomTypeName}}
+                </p>
+                <p class="price">{{item.price}}$</p>
+            </div>
+            <div class="between">
+                <div class="goods">
+                    <p *ngIf="item.wifi">Wi-Fi</p>
+                    <p *ngIf="item.tv">TV</p>
+                    <p *ngIf="item.kitchen">Kitchen</p>
+                    <p *ngIf="item.teaMaker">Tea Maker</p>
+                    <p *ngIf="item.coffeeMachine">Coffee Machine</p>
+                    <p>{{item.bedTypeName}}</p>
+                </div>
+                <p><span *ngIf="item.freeBeds">{{item.freeBeds}}/</span> {{item.beds}}</p>
+            </div>
+        </div>
+    </div>
+</div>

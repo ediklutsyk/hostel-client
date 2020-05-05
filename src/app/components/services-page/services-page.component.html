@@ -1,0 +1,42 @@
+<div class="guests-page-wrapper">
+    <div class="left-part">
+        <div class="custom-card">
+            <div class="header">
+                <p>Filter</p>
+            </div>
+            <div class="content">
+                <div>
+                    <p>Number of services ></p>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Amount</mat-label>
+                        <input matInput [(ngModel)]="amount" placeholder="0">
+                    </mat-form-field>
+                </div>
+                <div>
+                    <p>Price ></p>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Price</mat-label>
+                        <input matInput [(ngModel)]="price" placeholder="0">
+                    </mat-form-field>
+                </div>
+                <button mat-raised-button class="save-btn" (click)="searchData()">Search</button>
+            </div>
+        </div>
+    </div>
+    <div class="right-part">
+        <div class="guest-item title">
+            <p>No.</p>
+            <p>Name</p>
+            <p>Surname</p>
+            <p *ngIf="!amount">Price</p>
+            <p *ngIf="amount">Amount</p>
+        </div>
+        <div *ngFor="let item of data; let i = index" class="guest-item">
+            <p>{{i + 1}}</p>
+            <p>{{item.name}}</p>
+            <p>{{item.surname}}</p>
+            <p *ngIf="item.sumPrice">{{item.sumPrice}}</p>
+            <p *ngIf="item.amount">{{item.amount}}</p>
+        </div>
+    </div>
+</div>

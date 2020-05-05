@@ -1,0 +1,28 @@
+.general-app-wrapper {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 30px;
+    .router-content-wrapper {
+        max-width: 1000px;
+        width: 100%;
+        padding-bottom: 30px;
+        .mat-toolbar-row {
+            .title-toolbar {
+                margin-right: 30px;
+                border-bottom: 2px solid transparent;
+            }
+            span {
+                font-size: 26px;
+                margin-right: 110px;
+            }
+            a {
+                text-decoration: none;
+                color: #fff;
+                &.selected,
+                &:hover {
+                    border-bottom: 2px solid white;
+                }
+            }
+        }
+    }
+}

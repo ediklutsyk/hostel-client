@@ -1,0 +1,106 @@
+<div class="room-page-wrapper">
+  <div class="custom-card justify-between">
+    <div class="left-part">
+      <p>Room Type: {{room?.bedTypeName}}</p>
+      <p>
+        <span *ngIf="room?.wifi">Wi-Fi; </span>
+        <span *ngIf="room?.tv">TV; </span>
+        <span *ngIf="room?.teaMaker">Tea Maker; </span>
+        <span *ngIf="room?.kitchen">Kitchen; </span>
+        <span *ngIf="room?.coffeeMachine">Coffee Machine; </span>
+      </p>
+    </div>
+    <div class="menu-wrapper">
+      <p>Price: {{room?.price}}</p>
+      <mat-form-field class="example-full-width">
+        <mat-label>Number of nights</mat-label>
+        <input matInput placeholder="Number of nights" [(ngModel)]="nights" [value]="nights">
+      </mat-form-field>
+      <button mat-raised-button color="primary" class="save-btn" (click)="openDialog()">Add Guests</button>
+    </div>
+  </div>
+  <div class="custom-card">
+    <div class="header">
+      <p>Guests Currently Living</p>
+    </div>
+    <div class="content">
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <!--- Note that these columns can be defined in any order.
+                      The actual rendered columns are set as a property on the row definition" -->
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef> No. </th>
+          <td mat-cell *matCellDef="let element; let i = index;"> {{i+1}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef> Email </th>
+          <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="phone">
+          <th mat-header-cell *matHeaderCellDef> Phone </th>
+          <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="checkOutDate">
+          <th mat-header-cell *matHeaderCellDef> Check Out Date </th>
+          <td mat-cell *matCellDef="let element"> {{element.checkOut | date}}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+  </div>
+  <div class="custom-card">
+    <div class="header">
+      <p>Cleaning Staff</p>
+    </div>
+    <div class="content">
+      <table mat-table [dataSource]="dataStaff" class="mat-elevation-z8">
+
+        <!--- Note that these columns can be defined in any order.
+                      The actual rendered columns are set as a property on the row definition" -->
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef> No. </th>
+          <td mat-cell *matCellDef="let element; let i = index;"> {{i+1}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="surname">
+          <th mat-header-cell *matHeaderCellDef> Surnmae </th>
+          <td mat-cell *matCellDef="let element"> {{element.surname}} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="date">
+          <th mat-header-cell *matHeaderCellDef> Date </th>
+          <td mat-cell *matCellDef="let element"> {{element.date | date:'medium'}}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedCOlumnsStaff"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedCOlumnsStaff;"></tr>
+      </table>
+    </div>
+  </div>
+</div>

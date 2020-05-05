@@ -1,0 +1,22 @@
+.guests-page-wrapper {
+    display: flex;
+    width: 100%;
+    .right-part {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        .guest-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #c3c3c8;
+            cursor: pointer;
+            &.title {
+                cursor: default;
+                p {
+                    font-weight: 500;
+                }
+            }
+        }
+    }
+}

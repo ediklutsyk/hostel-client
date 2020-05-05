@@ -1,0 +1,82 @@
+<div class="setting-wrapper">
+    <div class="custom-card">
+        <div class="header">
+            <p>Room Type</p>
+        </div>
+        <div class="content">
+            <mat-radio-group class="border-top" [(ngModel)]="form.roomType1">
+                <mat-radio-button *ngFor="let item of subtypeRoom" class="example-margin" value="{{item.value}}"
+                    color="primary">{{item.label}}</mat-radio-button>
+            </mat-radio-group>
+        </div>
+    </div>
+    <span *ngIf="showOther" class="other-cards">
+        <div class="custom-card">
+            <div class="header">
+                <p>Number Of Guests</p>
+            </div>
+            <div class="content">
+                <form action=""></form>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Number</mat-label>
+                    <input matInput placeholder="0" [(ngModel)]="form.numberOfGuests">
+                </mat-form-field>
+            </div>
+        </div>
+        <span *ngIf="showOther2">
+            <div class="custom-card">
+                <div class="header">
+                    <p>Price</p>
+                </div>
+                <div class="content price">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>min</mat-label>
+                        <input matInput placeholder="{{priceRange.min}}" [(ngModel)]="form.min">
+                    </mat-form-field>
+                    <span>-</span>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>max</mat-label>
+                        <input matInput placeholder="{{priceRange.max}}" [(ngModel)]="form.max">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="custom-card">
+                <div class="header">
+                    <p>Room Type</p>
+                </div>
+                <div class="content">
+                    <div *ngFor="let item of roomsType" class="room-type">
+                        <mat-checkbox class="example-margin" color="primary" [(ngModel)]="item.checked">
+                            {{item.roomTypeName}}
+                        </mat-checkbox>
+                        <span>-</span>
+                        <span>{{item.count}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="custom-card">
+                <div class="header">
+                    <p>Goods</p>
+                </div>
+                <div class="content">
+                    <div *ngFor="let item of goods">
+                        <mat-checkbox class="example-margin" color="primary" [(ngModel)]="item.checked">{{item.label}}
+                        </mat-checkbox>
+                    </div>
+                </div>
+            </div>
+            <div class="custom-card">
+                <div class="header">
+                    <p>Beds</p>
+                </div>
+                <div class="content">
+                    <div *ngFor="let item of beds">
+                        <mat-checkbox class="example-margin" color="primary" [(ngModel)]="item.checked">{{item.value}}
+                        </mat-checkbox>
+                    </div>
+                </div>
+            </div>
+        </span>
+    </span>
+    <button mat-raised-button class="save-btn" (click)="applyChanges()">Apply Changes</button>
+</div>
